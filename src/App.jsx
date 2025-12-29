@@ -7,6 +7,7 @@ import PopularProducts from './components/PopularProducts'
 import NewArrivals from './components/NewArrivals'
 import Clients from './components/Clients'
 import Footer from './components/Footer'
+import WhyChooseUs from './components/WhyChooseUs'
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
       <Hero />
       <AboutSection />
       <Highlights />
+      <WhyChooseUs />
       <PopularProducts />
       <NewArrivals />
       <Clients />
