@@ -7,7 +7,7 @@ import slider5 from "./slider5.png";
 import one from "./one.jpg";
 import two from "./two.jpg";
 import three from "./three.jpg";
-import four from "./four.jpg";
+import four from "./paper (1).jpg";
 
 /* ================= GARBAGE BAG IMAGES ================= */
 import garbageBag1 from "./garbage-bag (1).jpeg";
@@ -38,6 +38,12 @@ import towel4Png from "./towel (4).png";
 
 import towel5Jpg from "./towel (5).jpg";
 import towel5Png from "./towel (5).png";
+
+/* ================= PAPER / TISSUE IMAGES ================= */
+import paper1Jpg from "./paper (1).jpg";
+import paper1Png from "./paper (1).png";
+import paper2Jpg from "./paper (2).jpg";
+import paper3Jpg from "./paper (3).jpg";
 
 const assets = {
   logo,
@@ -76,6 +82,12 @@ const assets = {
   towel4Png,
   towel5Jpg,
   towel5Png,
+
+  /* Paper / Tissue */
+  paper1Jpg,
+  paper1Png,
+  paper2Jpg,
+  paper3Jpg,
 };
 
 export default assets;

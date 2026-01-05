@@ -1,28 +1,15 @@
 import React, { useState } from "react";
 
 /* ================= PRODUCT IMAGES (20+) ================= */
+import assets from "../assets/assets";
+
 const PRODUCT_IMAGES = [
-  "/images/kitchen-tissue-1.jpg",
-  "/images/kitchen-tissue-2.jpg",
-  "/images/kitchen-tissue-3.jpg",
-  "/images/kitchen-tissue-4.jpg",
-  "/images/kitchen-tissue-5.jpg",
-  "/images/kitchen-tissue-6.jpg",
-  "/images/kitchen-tissue-7.jpg",
-  "/images/kitchen-tissue-8.jpg",
-  "/images/kitchen-tissue-9.jpg",
-  "/images/kitchen-tissue-10.jpg",
-  "/images/kitchen-tissue-11.jpg",
-  "/images/kitchen-tissue-12.jpg",
-  "/images/kitchen-tissue-13.jpg",
-  "/images/kitchen-tissue-14.jpg",
-  "/images/kitchen-tissue-15.jpg",
-  "/images/kitchen-tissue-16.jpg",
-  "/images/kitchen-tissue-17.jpg",
-  "/images/kitchen-tissue-18.jpg",
-  "/images/kitchen-tissue-19.jpg",
-  "/images/kitchen-tissue-20.jpg",
+  assets.paper1Jpg,
+  assets.paper1Png,
+  assets.paper2Jpg,
+  assets.paper3Jpg,
 ];
+
 
 export default function KitchenTissueDetails() {
   const [activeImage, setActiveImage] = useState(PRODUCT_IMAGES[0]);
