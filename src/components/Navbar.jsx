@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   Menu,
   X,
@@ -43,29 +44,30 @@ export default function Navbar() {
       <div className="bg-white">
         <div className="max-w-7xl mx-auto px-4 py-5 flex items-center justify-between">
           {/* LOGO */}
-          <a href="#" className="flex items-center gap-2">
-            <img src={assets.logo} alt="logo" className="w-30 " />
-           
-          </a>
+          <Link to="/" className="flex items-center gap-2">
+            <img src={assets.logo} alt="logo" className="w-30" />
+          </Link>
 
           {/* DESKTOP MENU */}
           <nav className="hidden lg:flex items-center gap-8 text-slate-700 font-medium">
             {[
-              "Home",
-              "About Us",
-              "Products",
-              "Buy Samples",
-              "Inquiry",
-              "Contact Us",
+              { label: "Home", path: "/" },
+              { label: "About Us", path: "/about" },
+              { label: "Products", path: "/products" },
+              { label: "Buy Samples", path: "/samples" },
+              { label: "Inquiry", path: "/inquiry" },
+              { label: "Contact Us", path: "/contact" },
+              { label: "Privacy Policy", path: "/privacy" },
+              { label: "Terms & Conditions", path: "/terms" },
             ].map((item) => (
-              <a
-                key={item}
-                href="#"
+              <Link
+                key={item.label}
+                to={item.path}
                 className="relative group"
               >
-                <span>{item}</span>
+                <span>{item.label}</span>
                 <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-teal-500 transition-all group-hover:w-full" />
-              </a>
+              </Link>
             ))}
 
             {/* CTA BUTTON */}
@@ -105,20 +107,23 @@ export default function Navbar() {
 
           <nav className="flex flex-col gap-5 text-slate-700 font-medium">
             {[
-              "Home",
-              "About Us",
-              "Products",
-              "Buy Samples",
-              "Inquiry",
-              "Contact Us",
+              { label: "Home", path: "/" },
+              { label: "About Us", path: "/about" },
+              { label: "Products", path: "/products" },
+              { label: "Buy Samples", path: "/samples" },
+              { label: "Inquiry", path: "/inquiry" },
+              { label: "Contact Us", path: "/contact" },
+              { label: "Privacy Policy", path: "/privacy" },
+              { label: "Terms & Conditions", path: "/terms" },
             ].map((item) => (
-              <a
-                key={item}
-                href="#"
+              <Link
+                key={item.label}
+                to={item.path}
+                onClick={() => setOpen(false)}
                 className="hover:text-teal-500 transition"
               >
-                {item}
-              </a>
+                {item.label}
+              </Link>
             ))}
 
             <button className="mt-6 px-5 py-2 rounded-full font-semibold text-white bg-gradient-to-r from-teal-500 to-cyan-500 shadow-md hover:scale-105 transition">

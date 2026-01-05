@@ -1,31 +1,23 @@
 import React from 'react'
 import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import AboutSection from './components/AboutSection'
-import Highlights from './components/Highlights'
-import PopularProducts from './components/PopularProducts'
-import NewArrivals from './components/NewArrivals'
-import Clients from './components/Clients'
+
 import Footer from './components/Footer'
-import WhyChooseUs from './components/WhyChooseUs'
-import ProductDetails from './components/ProductDetails'
-import KitchenTowelDetails from './components/KitchenTowelDetails'
-import KitchenTissueDetails from './components/KitchenTissueDetails'
+
+import { Routes , Route} from 'react-router-dom'
+import PrivacyPolicy from './pages/PrivacyPolicy'
+import TermsAndConditions from './pages/TermsAndConditions'
+import HomePage from './pages/HomePage'
 
 const App = () => {
   return (
     <div>
-      <Navbar />
-      <Hero />
-      <ProductDetails />
-      <KitchenTowelDetails />
-      <KitchenTissueDetails />
-      <AboutSection />
-      <Highlights />
-      <WhyChooseUs /> 
-      <PopularProducts />
-      <NewArrivals />
-      <Clients />
+      <Navbar/>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
+<Route path="/terms" element={<TermsAndConditions />} />
+
+      </Routes>
       <Footer />
     </div>
   )
