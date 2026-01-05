@@ -130,10 +130,10 @@ export default function KitchenTowelDetails() {
             {/* CTA */}
             <div className="flex flex-col sm:flex-row gap-4">
               <button className="flex-1 bg-teal-500 text-white py-4 rounded-xl font-semibold hover:bg-teal-600 transition">
-                Enquire Now
+                Buy Now
               </button>
-              <button className="flex-1 border border-slate-300 text-slate-800 py-4 rounded-xl font-semibold hover:bg-slate-100 transition">
-                Download Product Sheet
+              <button className="flex-1 border border-slate-300 py-4 rounded-xl font-semibold text-slate-800 hover:bg-slate-100 transition">
+                Buy From Amazon
               </button>
             </div>
 

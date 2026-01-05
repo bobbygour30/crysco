@@ -6,33 +6,27 @@ const arrivals = [
   {
     id: 1,
     name:
-      "Brown Kraft Paper Stand Up Pouch – Front Transparent / Back Kraft Paper with Zipper",
-    image:
-      assets.one,
+      "Non-Woven Kitchen Towels",
+    image: assets.one,
   },
   {
     id: 2,
-    name:
-      "Matt Blue Standup Pouch with Zipper / Matt Window",
-    image:
-      assets.two,
+    name: "CrySco Premium Garbage Bags",
+    image: assets.two,
   },
   {
     id: 3,
-    name:
-      "Matte Black Stand Up Pouch with Zipper",
-    image:
-      assets.three,
+    name: "Non-Woven Kitchen Towels Combo Pack",
+    image: assets.three,
   },
   {
     id: 4,
-    name:
-      "Transparent Stand Up Pouch with Zipper",
-    image:
-      assets.four,
+    name: "CrySco Kitchen Tissues",
+    image: assets.four,
   },
 ];
 
+// duplicate for seamless loop
 const sliderItems = [...arrivals, ...arrivals];
 
 export default function NewArrivals() {
@@ -46,7 +40,7 @@ export default function NewArrivals() {
 
     const animate = () => {
       if (!isPaused.current) {
-        position.current += 0.25;
+        position.current += 0.25; // speed
         if (position.current >= track.scrollWidth / 2) {
           position.current = 0;
         }
@@ -56,7 +50,7 @@ export default function NewArrivals() {
     };
 
     animationId = requestAnimationFrame(animate);
-    return () => cancelAnimationId && cancelAnimationFrame(animationId);
+    return () => cancelAnimationFrame(animationId);
   }, []);
 
   const manualSlide = (dir) => {
@@ -78,7 +72,11 @@ export default function NewArrivals() {
         </div>
 
         {/* SLIDER */}
-        <div className="relative">
+        <div
+          className="relative"
+          onMouseEnter={() => (isPaused.current = true)}
+          onMouseLeave={() => (isPaused.current = false)}
+        >
           {/* Left Arrow */}
           <button
             onClick={() => manualSlide(-1)}
@@ -97,10 +95,7 @@ export default function NewArrivals() {
 
           {/* Track */}
           <div className="overflow-hidden">
-            <div
-              ref={trackRef}
-              className="flex gap-20 will-change-transform"
-            >
+            <div ref={trackRef} className="flex gap-20 will-change-transform">
               {sliderItems.map((item, index) => (
                 <div
                   key={index}
@@ -110,6 +105,7 @@ export default function NewArrivals() {
                     <div className="absolute inset-0 border border-slate-200 rounded-lg" />
 
                     <div className="relative bg-white rounded-lg px-10 pt-16 pb-10 shadow-sm group-hover:shadow-xl transition">
+                      {/* image */}
                       <div className="h-56 flex items-center justify-center">
                         <img
                           src={item.image}
@@ -122,13 +118,19 @@ export default function NewArrivals() {
                         />
                       </div>
 
+                      {/* name */}
                       <p className="mt-10 text-center text-sm font-semibold text-slate-800 leading-snug">
                         {item.name}
                       </p>
 
-                      <div className="mt-8 flex justify-center">
-                        <button className="px-8 py-2 text-sm font-semibold border border-slate-300 rounded-full hover:border-teal-500 hover:text-teal-600 transition">
-                          KNOW MORE
+                      {/* buttons */}
+                      <div className="mt-8 flex flex-col gap-3 items-center">
+                        <button className="w-full px-6 py-2 text-sm font-semibold rounded-full bg-teal-600 text-white hover:bg-teal-700 transition">
+                          BUY NOW
+                        </button>
+
+                        <button className="w-full px-6 py-2 text-sm font-semibold rounded-full border border-slate-300 text-slate-700 hover:border-orange-500 hover:text-orange-600 transition">
+                          BUY FROM AMAZON
                         </button>
                       </div>
                     </div>

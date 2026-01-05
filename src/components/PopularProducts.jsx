@@ -3,29 +3,26 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import assets from "../assets/assets";
 
 const products = [
-  {
+ {
     id: 1,
-    name: "Corrugated Box B6 – 16 × 12 × 12 Inches",
-    image:
-      assets.one,
+    name:
+      "Non-Woven Kitchen Towels",
+    image: assets.one,
   },
   {
     id: 2,
-    name: "Shiny Silver Stand Up Pouch",
-    image:
-      assets.two,
+    name: "CrySco Premium Garbage Bags",
+    image: assets.two,
   },
   {
     id: 3,
-    name: "Golden Stand Up Pouch",
-    image:
-      assets.three,
+    name: "Non-Woven Kitchen Towels Combo Pack",
+    image: assets.three,
   },
   {
     id: 4,
-    name: "Custom Printed Packaging Pouch",
-    image:
-      assets.four,
+    name: "CrySco Kitchen Tissues",
+    image: assets.four,
   },
 ];
 
@@ -35,17 +32,20 @@ const sliderItems = [...products, ...products];
 export default function PopularProducts() {
   const trackRef = useRef(null);
   const position = useRef(0);
+  const isPaused = useRef(false);
 
   useEffect(() => {
     const track = trackRef.current;
     let animationId;
 
     const slide = () => {
-      position.current += 0.3; // speed
-      if (position.current >= track.scrollWidth / 2) {
-        position.current = 0;
+      if (!isPaused.current) {
+        position.current += 0.3; // speed
+        if (position.current >= track.scrollWidth / 2) {
+          position.current = 0;
+        }
+        track.style.transform = `translateX(-${position.current}px)`;
       }
-      track.style.transform = `translateX(-${position.current}px)`;
       animationId = requestAnimationFrame(slide);
     };
 
@@ -66,13 +66,17 @@ export default function PopularProducts() {
             POPULAR PRODUCTS
           </p>
           <p className="text-slate-600 max-w-xl mx-auto">
-            Are you looking for something outside the box? Let us help
-            you explore our wide range of products.
+            Are you looking for something outside the box? Let us help you explore
+            our wide range of products.
           </p>
         </div>
 
         {/* SLIDER */}
-        <div className="relative">
+        <div
+          className="relative"
+          onMouseEnter={() => (isPaused.current = true)}
+          onMouseLeave={() => (isPaused.current = false)}
+        >
           {/* Arrows */}
           <button
             onClick={() => manualSlide(-1)}
@@ -90,10 +94,7 @@ export default function PopularProducts() {
 
           {/* Track */}
           <div className="overflow-hidden">
-            <div
-              ref={trackRef}
-              className="flex gap-16 will-change-transform"
-            >
+            <div ref={trackRef} className="flex gap-16 will-change-transform">
               {sliderItems.map((product, i) => (
                 <div
                   key={i}
@@ -122,10 +123,14 @@ export default function PopularProducts() {
                         {product.name}
                       </p>
 
-                      {/* button */}
-                      <div className="mt-8 flex justify-center">
-                        <button className="px-8 py-2 text-sm font-semibold border border-slate-300 rounded-full hover:border-teal-500 hover:text-teal-600 transition">
-                          KNOW MORE
+                      {/* buttons */}
+                      <div className="mt-8 flex flex-col gap-3 items-center">
+                        <button className="w-full px-6 py-2 text-sm font-semibold rounded-full bg-teal-600 text-white hover:bg-teal-700 transition">
+                          BUY NOW
+                        </button>
+
+                        <button className="w-full px-6 py-2 text-sm font-semibold rounded-full border border-slate-300 text-slate-700 hover:border-orange-500 hover:text-orange-600 transition">
+                          BUY FROM AMAZON
                         </button>
                       </div>
                     </div>
