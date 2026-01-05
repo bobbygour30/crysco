@@ -8,15 +8,21 @@ import NewArrivals from './components/NewArrivals'
 import Clients from './components/Clients'
 import Footer from './components/Footer'
 import WhyChooseUs from './components/WhyChooseUs'
+import ProductDetails from './components/ProductDetails'
+import KitchenTowelDetails from './components/KitchenTowelDetails'
+import KitchenTissueDetails from './components/KitchenTissueDetails'
 
 const App = () => {
   return (
     <div>
       <Navbar />
       <Hero />
+      <ProductDetails />
+      <KitchenTowelDetails />
+      <KitchenTissueDetails />
       <AboutSection />
       <Highlights />
-      <WhyChooseUs />
+      <WhyChooseUs /> 
       <PopularProducts />
       <NewArrivals />
       <Clients />
