@@ -78,7 +78,7 @@ export default function AboutUs() {
           >
             <div className="absolute inset-0 rounded-3xl bg-teal-100 -rotate-3" />
             <img
-              src={assets.about || "https://via.placeholder.com/700x500"}
+              src={assets.about}
               alt="Crysco Manufacturing"
               className="relative rounded-3xl shadow-2xl object-cover"
             />

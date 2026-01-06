@@ -8,6 +8,7 @@ import one from "./one.jpg";
 import two from "./two.jpg";
 import three from "./three.jpg";
 import four from "./paper (1).jpg";
+import about from "./about.png";
 
 /* ================= GARBAGE BAG IMAGES ================= */
 import garbageBag1 from "./garbage-bag (1).jpeg";
@@ -88,6 +89,8 @@ const assets = {
   paper1Png,
   paper2Jpg,
   paper3Jpg,
+
+  about,
 };
 
 export default assets;
