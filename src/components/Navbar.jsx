@@ -14,6 +14,16 @@ import assets from "../assets/assets";
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
+  const NAV_ITEMS = [
+    { label: "Home", path: "/" },
+    { label: "About Us", path: "/about-us" },
+    { label: "Products", path: "/products" },
+    { label: "Buy Samples", path: "/samples" },
+    { label: "Inquiry", path: "/inquiry" },
+    { label: "Privacy Policy", path: "/privacy" },
+    { label: "Terms & Conditions", path: "/terms" },
+  ];
+
   return (
     <header className="w-full sticky top-0 z-50 bg-white shadow-sm">
       {/* ================= TOP BAR ================= */}
@@ -45,21 +55,12 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-4 py-5 flex items-center justify-between">
           {/* LOGO */}
           <Link to="/" className="flex items-center gap-2">
-            <img src={assets.logo} alt="logo" className="w-30" />
+            <img src={assets.logo} alt="Crysco Logo" className="w-30" />
           </Link>
 
           {/* DESKTOP MENU */}
           <nav className="hidden lg:flex items-center gap-8 text-slate-700 font-medium">
-            {[
-              { label: "Home", path: "/" },
-              { label: "About Us", path: "/about" },
-              { label: "Products", path: "/products" },
-              { label: "Buy Samples", path: "/samples" },
-              { label: "Inquiry", path: "/inquiry" },
-              { label: "Contact Us", path: "/contact" },
-              { label: "Privacy Policy", path: "/privacy" },
-              { label: "Terms & Conditions", path: "/terms" },
-            ].map((item) => (
+            {NAV_ITEMS.map((item) => (
               <Link
                 key={item.label}
                 to={item.path}
@@ -71,10 +72,13 @@ export default function Navbar() {
             ))}
 
             {/* CTA BUTTON */}
-            <button className="relative overflow-hidden px-6 py-2 rounded-full font-semibold text-white bg-gradient-to-r from-teal-500 to-cyan-500 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-teal-300/50">
-              <span className="relative z-10">Buy Online</span>
+            <Link
+              to="/inquiry"
+              className="relative overflow-hidden px-6 py-2 rounded-full font-semibold text-white bg-gradient-to-r from-teal-500 to-cyan-500 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-teal-300/50"
+            >
+              <span className="relative z-10">Contact Us</span>
               <span className="absolute inset-0 bg-white/20 opacity-0 hover:opacity-100 transition" />
-            </button>
+            </Link>
           </nav>
 
           {/* MOBILE BUTTON */}
@@ -106,16 +110,7 @@ export default function Navbar() {
           </div>
 
           <nav className="flex flex-col gap-5 text-slate-700 font-medium">
-            {[
-              { label: "Home", path: "/" },
-              { label: "About Us", path: "/about" },
-              { label: "Products", path: "/products" },
-              { label: "Buy Samples", path: "/samples" },
-              { label: "Inquiry", path: "/inquiry" },
-              { label: "Contact Us", path: "/contact" },
-              { label: "Privacy Policy", path: "/privacy" },
-              { label: "Terms & Conditions", path: "/terms" },
-            ].map((item) => (
+            {NAV_ITEMS.map((item) => (
               <Link
                 key={item.label}
                 to={item.path}
@@ -126,9 +121,13 @@ export default function Navbar() {
               </Link>
             ))}
 
-            <button className="mt-6 px-5 py-2 rounded-full font-semibold text-white bg-gradient-to-r from-teal-500 to-cyan-500 shadow-md hover:scale-105 transition">
-              Buy Online
-            </button>
+            <Link
+              to="/inquiry"
+              onClick={() => setOpen(false)}
+              className="mt-6 text-center px-5 py-2 rounded-full font-semibold text-white bg-gradient-to-r from-teal-500 to-cyan-500 shadow-md hover:scale-105 transition"
+            >
+              Contact Us
+            </Link>
 
             <div className="mt-6 flex items-center gap-4 text-slate-600">
               <User size={18} />
