@@ -119,7 +119,7 @@ export default function Footer() {
       {/* BOTTOM BAR */}
       <div className="bg-sky-600 text-white">
         <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row items-center justify-center  gap-3 text-sm">
-          <p>© 2025. All Rights Reserved.</p>
+          <p>© All right reserved @ Trikaya Fashion India.</p>
         </div>
       </div>
     </footer>
