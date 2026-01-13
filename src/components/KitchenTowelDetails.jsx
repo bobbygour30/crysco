@@ -22,19 +22,15 @@ const PRODUCT_IMAGES = [
   assets.towel5Png,
 ];
 
-
 export default function KitchenTowelDetails() {
   const [activeImage, setActiveImage] = useState(PRODUCT_IMAGES[0]);
 
   return (
     <section className="bg-gradient-to-br from-slate-50 via-white to-slate-100 py-20">
       <div className="max-w-7xl mx-auto px-4 lg:px-8">
-
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-
           {/* ================= LEFT : IMAGE GALLERY ================= */}
           <div className="flex flex-col-reverse lg:flex-row gap-4">
-
             {/* Thumbnails */}
             <div className="flex lg:flex-col gap-3 overflow-x-auto lg:overflow-y-auto lg:h-[520px] scrollbar-hide pr-1">
               {PRODUCT_IMAGES.map((img, index) => (
@@ -73,7 +69,6 @@ export default function KitchenTowelDetails() {
 
           {/* ================= RIGHT : PRODUCT DETAILS ================= */}
           <div className="space-y-8">
-
             {/* Title */}
             <div>
               <h1 className="text-3xl sm:text-4xl font-bold text-slate-900">
@@ -132,16 +127,20 @@ export default function KitchenTowelDetails() {
               <button className="flex-1 bg-teal-500 text-white py-4 rounded-xl font-semibold hover:bg-teal-600 transition">
                 Buy Now
               </button>
-              <button className="flex-1 border border-slate-300 py-4 rounded-xl font-semibold text-slate-800 hover:bg-slate-100 transition">
+              <a
+              href="https://www.amazon.in/Crysco-Non-Woven-Washable-Reusable-Absorbent/dp/B0FJRTPGHZ?ref_=ast_sto_dp"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 border border-slate-300 py-4 rounded-xl font-semibold text-slate-800 hover:bg-slate-100 transition text-center"
+              >
                 Buy From Amazon
-              </button>
+              </a>
             </div>
 
             {/* Tagline */}
             <p className="text-sm text-slate-500 italic">
               Smart cleaning starts here.
             </p>
-
           </div>
         </div>
       </div>

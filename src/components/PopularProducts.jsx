@@ -3,26 +3,33 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import assets from "../assets/assets";
 
 const products = [
- {
+  {
     id: 1,
-    name:
-      "Non-Woven Kitchen Towels",
+    name: "Non-Woven Kitchen Towels",
     image: assets.one,
+    amazonLink:
+      "https://www.amazon.in/Crysco-Non-Woven-Washable-Reusable-Absorbent/dp/B0FJRTPGHZ?ref_=ast_sto_dp",
   },
   {
     id: 2,
     name: "CrySco Premium Garbage Bags",
     image: assets.two,
+    amazonLink:
+      "https://www.amazon.in/Crysco-Garbage-Medium-19x21-Inches/dp/B0FHRLXYBZ?ref_=ast_sto_dp&th=1",
   },
   {
     id: 3,
     name: "Non-Woven Kitchen Towels Combo Pack",
     image: assets.three,
+    amazonLink:
+      "https://www.amazon.in/Crysco-Non-Woven-Washable-Reusable-Absorbent/dp/B0FJRTPGHZ?ref_=ast_sto_dp",
   },
   {
     id: 4,
     name: "CrySco Kitchen Tissues",
     image: assets.four,
+    amazonLink:
+      "https://www.amazon.in/Crysco-Kitchen-Tissue-Absorbant-Natural/dp/B0FHWGXYCL?ref_=ast_sto_dp&th=1",
   },
 ];
 
@@ -40,7 +47,7 @@ export default function PopularProducts() {
 
     const slide = () => {
       if (!isPaused.current) {
-        position.current += 0.3; // speed
+        position.current += 0.3;
         if (position.current >= track.scrollWidth / 2) {
           position.current = 0;
         }
@@ -101,7 +108,6 @@ export default function PopularProducts() {
                   className="min-w-[280px] sm:min-w-[320px] lg:min-w-[340px]"
                 >
                   <div className="relative group">
-                    {/* frame */}
                     <div className="absolute inset-0 border border-slate-200 rounded-lg" />
 
                     <div className="relative bg-white rounded-lg px-10 pt-14 pb-10 shadow-sm group-hover:shadow-xl transition">
@@ -129,9 +135,14 @@ export default function PopularProducts() {
                           BUY NOW
                         </button>
 
-                        <button className="w-full px-6 py-2 text-sm font-semibold rounded-full border border-slate-300 text-slate-700 hover:border-orange-500 hover:text-orange-600 transition">
+                        <a
+                          href={product.amazonLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-full px-6 py-2 text-sm font-semibold rounded-full border border-slate-300 text-slate-700 hover:border-orange-500 hover:text-orange-600 transition text-center"
+                        >
                           BUY FROM AMAZON
-                        </button>
+                        </a>
                       </div>
                     </div>
                   </div>

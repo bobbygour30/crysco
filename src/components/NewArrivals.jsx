@@ -5,24 +5,31 @@ import assets from "../assets/assets";
 const arrivals = [
   {
     id: 1,
-    name:
-      "Non-Woven Kitchen Towels",
+    name: "Non-Woven Kitchen Towels",
     image: assets.one,
+    amazonLink:
+      "https://www.amazon.in/Crysco-Non-Woven-Washable-Reusable-Absorbent/dp/B0FJRTPGHZ?ref_=ast_sto_dp",
   },
   {
     id: 2,
     name: "CrySco Premium Garbage Bags",
     image: assets.two,
+    amazonLink:
+      "https://www.amazon.in/Crysco-Garbage-Medium-19x21-Inches/dp/B0FHRLXYBZ?ref_=ast_sto_dp&th=1",
   },
   {
     id: 3,
     name: "Non-Woven Kitchen Towels Combo Pack",
     image: assets.three,
+    amazonLink:
+      "https://www.amazon.in/Crysco-Non-Woven-Washable-Reusable-Absorbent/dp/B0FJRTPGHZ?ref_=ast_sto_dp",
   },
   {
     id: 4,
     name: "CrySco Kitchen Tissues",
     image: assets.four,
+    amazonLink:
+      "https://www.amazon.in/Crysco-Kitchen-Tissue-Absorbant-Natural/dp/B0FHWGXYCL?ref_=ast_sto_dp&th=1",
   },
 ];
 
@@ -40,7 +47,7 @@ export default function NewArrivals() {
 
     const animate = () => {
       if (!isPaused.current) {
-        position.current += 0.25; // speed
+        position.current += 0.25;
         if (position.current >= track.scrollWidth / 2) {
           position.current = 0;
         }
@@ -129,9 +136,14 @@ export default function NewArrivals() {
                           BUY NOW
                         </button>
 
-                        <button className="w-full px-6 py-2 text-sm font-semibold rounded-full border border-slate-300 text-slate-700 hover:border-orange-500 hover:text-orange-600 transition">
+                        <a
+                          href={item.amazonLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-full px-6 py-2 text-sm font-semibold rounded-full border border-slate-300 text-slate-700 hover:border-orange-500 hover:text-orange-600 transition text-center"
+                        >
                           BUY FROM AMAZON
-                        </button>
+                        </a>
                       </div>
                     </div>
                   </div>

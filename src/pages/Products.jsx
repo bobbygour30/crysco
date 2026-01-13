@@ -7,21 +7,29 @@ const products = [
     id: 1,
     name: "Non-Woven Kitchen Towels",
     image: assets.one,
+    amazonLink:
+      "https://www.amazon.in/Crysco-Non-Woven-Washable-Reusable-Absorbent/dp/B0FJRTPGHZ?ref_=ast_sto_dp",
   },
   {
     id: 2,
     name: "CrySco Premium Garbage Bags",
     image: assets.two,
+    amazonLink:
+      "https://www.amazon.in/Crysco-Garbage-Medium-19x21-Inches/dp/B0FHRLXYBZ?ref_=ast_sto_dp&th=1",
   },
   {
     id: 3,
     name: "Non-Woven Kitchen Towels Combo Pack",
     image: assets.three,
+    amazonLink:
+      "https://www.amazon.in/Crysco-Non-Woven-Washable-Reusable-Absorbent/dp/B0FJRTPGHZ?ref_=ast_sto_dp",
   },
   {
     id: 4,
     name: "CrySco Kitchen Tissues",
     image: assets.four,
+    amazonLink:
+      "https://www.amazon.in/Crysco-Kitchen-Tissue-Absorbant-Natural/dp/B0FHWGXYCL?ref_=ast_sto_dp&th=1",
   },
 ];
 
@@ -94,10 +102,15 @@ export default function Products() {
                       Buy Now
                     </button>
 
-                    <button className="flex items-center justify-center gap-2 w-full px-5 py-2 text-sm font-semibold rounded-full border border-slate-300 text-slate-700 hover:border-orange-500 hover:text-orange-600 transition">
+                    <a
+                      href={product.amazonLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-2 w-full px-5 py-2 text-sm font-semibold rounded-full border border-slate-300 text-slate-700 hover:border-orange-500 hover:text-orange-600 transition"
+                    >
                       <ExternalLink size={16} />
                       Buy from Amazon
-                    </button>
+                    </a>
                   </div>
                 </div>
               </motion.div>

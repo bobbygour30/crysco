@@ -121,9 +121,15 @@ export default function ProductDetails() {
               <button className="flex-1 bg-teal-500 text-white py-4 rounded-xl font-semibold hover:bg-teal-600 transition">
                 Buy Now
               </button>
-              <button className="flex-1 border border-slate-300 py-4 rounded-xl font-semibold text-slate-800 hover:bg-slate-100 transition">
-                Buy From Amazon
-              </button>
+              <a
+  href="https://www.amazon.in/dp/B0FHRSGYYF?th=1"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="flex-1 border border-slate-300 py-4 rounded-xl font-semibold text-slate-800 hover:bg-slate-100 transition text-center"
+>
+  Buy From Amazon
+</a>
+
             </div>
 
           </div>

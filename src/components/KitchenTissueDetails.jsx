@@ -125,9 +125,11 @@ export default function KitchenTissueDetails() {
               <button className="flex-1 bg-teal-500 text-white py-4 rounded-xl font-semibold hover:bg-teal-600 transition">
                 Buy Now
               </button>
-              <button className="flex-1 border border-slate-300 py-4 rounded-xl font-semibold text-slate-800 hover:bg-slate-100 transition">
+              <a   target="_blank"
+  rel="noopener noreferrer"
+  className="flex-1 border border-slate-300 py-4 rounded-xl font-semibold text-slate-800 hover:bg-slate-100 transition text-center" href="https://www.amazon.in/Crysco-Kitchen-Tissue-Absorbant-Natural/dp/B0FHWGXYCL?ref_=ast_sto_dp&th=1">
                 Buy From Amazon
-              </button>
+              </a>
             </div>
 
             {/* Tagline */}

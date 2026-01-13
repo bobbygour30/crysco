@@ -38,10 +38,22 @@ export default function Navbar() {
             <Instagram size={16} className="hover:text-teal-400 cursor-pointer" />
             <Linkedin size={16} className="hover:text-teal-400 cursor-pointer" />
 
-            <div className="hidden md:flex items-center gap-4 ml-6">
-              <button className="hover:text-teal-400 transition">
-                Login / Register
-              </button>
+            {/* Desktop Auth + Cart */}
+            <div className="hidden md:flex items-center gap-5 ml-6">
+              <Link
+                to="/login"
+                className="hover:text-teal-400 transition"
+              >
+                Login
+              </Link>
+
+              <Link
+                to="/signup"
+                className="hover:text-teal-400 transition"
+              >
+                Sign Up
+              </Link>
+
               <button className="flex items-center gap-1 hover:text-teal-400 transition">
                 <ShoppingCart size={16} /> Cart (0)
               </button>
@@ -71,9 +83,9 @@ export default function Navbar() {
               </Link>
             ))}
 
-            {/* CTA BUTTON */}
+            {/* CTA */}
             <Link
-              to="/inquiry"
+              to="/contact"
               className="relative overflow-hidden px-6 py-2 rounded-full font-semibold text-white bg-gradient-to-r from-teal-500 to-cyan-500 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-teal-300/50"
             >
               <span className="relative z-10">Contact Us</span>
@@ -122,16 +134,32 @@ export default function Navbar() {
             ))}
 
             <Link
-              to="/inquiry"
+              to="/contact"
               onClick={() => setOpen(false)}
               className="mt-6 text-center px-5 py-2 rounded-full font-semibold text-white bg-gradient-to-r from-teal-500 to-cyan-500 shadow-md hover:scale-105 transition"
             >
               Contact Us
             </Link>
 
-            <div className="mt-6 flex items-center gap-4 text-slate-600">
-              <User size={18} />
-              <span>Login / Register</span>
+            {/* Mobile Auth */}
+            <div className="mt-6 border-t pt-4 space-y-3">
+              <Link
+                to="/login"
+                onClick={() => setOpen(false)}
+                className="flex items-center gap-2 hover:text-teal-500 transition"
+              >
+                <User size={18} />
+                Login
+              </Link>
+
+              <Link
+                to="/signup"
+                onClick={() => setOpen(false)}
+                className="flex items-center gap-2 hover:text-teal-500 transition"
+              >
+                <User size={18} />
+                Sign Up
+              </Link>
             </div>
           </nav>
         </div>
