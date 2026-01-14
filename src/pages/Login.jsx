@@ -1,9 +1,25 @@
-import React, { useState } from "react";
+// src/pages/Login.js
+import React, { useState, useContext } from "react";
 import { Eye, EyeOff } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { login } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await login(email, password);
+      navigate("/");
+    } catch (error) {
+      alert(error.response?.data?.message || "Login failed");
+    }
+  };
 
   return (
     <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 via-white to-slate-100 px-4">
@@ -21,7 +37,7 @@ export default function Login() {
           <p className="mt-2 text-slate-600">Login to continue</p>
         </div>
 
-        <form className="space-y-6">
+        <form className="space-y-6" onSubmit={handleSubmit}>
 
           {/* Email */}
           <div>
@@ -31,8 +47,11 @@ export default function Login() {
             <input
               type="email"
               placeholder="you@example.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="w-full rounded-xl border border-slate-300 px-4 py-3
               focus:outline-none focus:ring-2 focus:ring-teal-400"
+              required
             />
           </div>
 
@@ -46,8 +65,11 @@ export default function Login() {
               <input
                 type={showPassword ? "text" : "password"}
                 placeholder="••••••••"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className="w-full rounded-xl border border-slate-300 px-4 py-3 pr-12
                 focus:outline-none focus:ring-2 focus:ring-teal-400"
+                required
               />
               <button
                 type="button"

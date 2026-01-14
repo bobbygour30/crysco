@@ -1,9 +1,26 @@
-import React, { useState } from "react";
+// src/pages/Signup.js
+import React, { useState, useContext } from "react";
 import { Eye, EyeOff } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 
 export default function Signup() {
   const [showPassword, setShowPassword] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { register } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await register(name, email, password);
+      navigate("/");
+    } catch (error) {
+      alert(error.response?.data?.message || "Signup failed");
+    }
+  };
 
   return (
     <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 via-white to-slate-100 px-4">
@@ -21,7 +38,7 @@ export default function Signup() {
           <p className="mt-2 text-slate-600">Sign up to get started</p>
         </div>
 
-        <form className="space-y-6">
+        <form className="space-y-6" onSubmit={handleSubmit}>
 
           {/* Name */}
           <div>
@@ -31,8 +48,11 @@ export default function Signup() {
             <input
               type="text"
               placeholder="John Doe"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               className="w-full rounded-xl border border-slate-300 px-4 py-3
               focus:outline-none focus:ring-2 focus:ring-teal-400"
+              required
             />
           </div>
 
@@ -44,8 +64,11 @@ export default function Signup() {
             <input
               type="email"
               placeholder="you@example.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="w-full rounded-xl border border-slate-300 px-4 py-3
               focus:outline-none focus:ring-2 focus:ring-teal-400"
+              required
             />
           </div>
 
@@ -59,8 +82,11 @@ export default function Signup() {
               <input
                 type={showPassword ? "text" : "password"}
                 placeholder="Create a password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className="w-full rounded-xl border border-slate-300 px-4 py-3 pr-12
                 focus:outline-none focus:ring-2 focus:ring-teal-400"
+                required
               />
               <button
                 type="button"
