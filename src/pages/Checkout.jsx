@@ -67,13 +67,14 @@ export default function Checkout() {
     }
   };
 
+  // No delivery charge added here anymore
   const calculateTotal = () => {
     let total = 0;
     products.forEach(prod => {
       const qty = cart[prod._id] || 0;
       total += prod.price * qty;
     });
-    return total + 10; // delivery charge
+    return total;
   };
 
   const handlePlaceOrder = async () => {
@@ -85,7 +86,7 @@ export default function Checkout() {
     setLoading(true);
     setError(null);
 
-    const amount = calculateTotal();
+    const amount = calculateTotal(); // pure cart total
     const items = products
       .map(prod => ({
         itemId: prod._id,
@@ -98,7 +99,7 @@ export default function Checkout() {
         const res = await api.post("/api/order/place", {
           userId: user._id,
           items,
-          address,
+          address: { fullAddress: address.trim() }, // saved as object
           amount,
         });
 
@@ -113,7 +114,7 @@ export default function Checkout() {
         const orderRes = await api.post("/api/order/razorpay", {
           userId: user._id,
           items,
-          address,
+          address: { fullAddress: address.trim() },
           amount,
         });
 
@@ -187,7 +188,7 @@ export default function Checkout() {
         )}
 
         <div className="grid lg:grid-cols-5 gap-8">
-          {/* Left Column: Order Summary */}
+          {/* Left: Order Summary */}
           <div className="lg:col-span-3">
             <div className="bg-white rounded-2xl shadow-xl border border-slate-100 overflow-hidden">
               <div className="p-6 md:p-8 border-b bg-slate-50">
@@ -229,14 +230,6 @@ export default function Checkout() {
               )}
 
               <div className="p-6 md:p-8 bg-slate-50">
-                <div className="flex justify-between text-sm mb-2">
-                  <span className="text-slate-600">Subtotal</span>
-                  <span>₹{calculateTotal() - 10}</span>
-                </div>
-                <div className="flex justify-between text-sm mb-4">
-                  <span className="text-slate-600">Delivery Charge</span>
-                  <span>₹10</span>
-                </div>
                 <div className="flex justify-between text-xl font-bold border-t pt-4">
                   <span>Total</span>
                   <span className="text-teal-700">₹{calculateTotal()}</span>
@@ -245,7 +238,7 @@ export default function Checkout() {
             </div>
           </div>
 
-          {/* Right Column: Payment & Address */}
+          {/* Right: Payment & Address */}
           <div className="lg:col-span-2">
             <div className="bg-white rounded-2xl shadow-xl border border-slate-100 p-6 md:p-8 sticky top-8">
               <h2 className="text-2xl font-semibold mb-6 flex items-center gap-3">

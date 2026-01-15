@@ -9,25 +9,22 @@ export default function AdminLogin() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setError("");
-
-    try {
-      const res = await api.post("/api/user/admin", { email, password });
-      if (res.data.success) {
-        localStorage.setItem("adminToken", res.data.token);
-        navigate("/admin/dashboard");
-      } else {
-        setError(res.data.message || "Login failed");
-      }
-    } catch (err) {
-      setError(err.response?.data?.message || "Something went wrong");
-    } finally {
-      setLoading(false);
+  // src/pages/Admin/AdminLogin.jsx (relevant part)
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    const res = await api.post("/api/user/admin", { email, password });
+    if (res.data.success) {
+      localStorage.setItem("adminToken", res.data.token);
+      console.log("Admin token saved:", res.data.token.substring(0, 20) + "...");
+      navigate("/admin/dashboard");
+    } else {
+      alert(res.data.message || "Login failed");
     }
-  };
+  } catch (err) {
+    alert(err.response?.data?.message || "Something went wrong");
+  }
+};
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100 p-4">
