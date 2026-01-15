@@ -28,13 +28,16 @@ import AdminLogin from "./pages/Admin/AdminLogin";
 import AdminDashboard from "./pages/Admin/AdminDashboard";
 import AddProduct from "./pages/Admin/AddProduct";
 import OrderList from "./pages/Admin/OrderList";
+import ProductDetail from "./pages/ProductDetail";
+import ScrollToTop from "./components/ScrollToTop";
 
 const App = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-
+        
       <main className="flex-grow">
+        <ScrollToTop />
         <Routes element={<ProtectedRoute />}>
           {/* Public / Marketing Pages */}
           <Route path="/" element={<HomePage />} />
@@ -43,6 +46,7 @@ const App = () => {
           <Route path="/samples" element={<BuySamples />} />
           <Route path="/inquiry" element={<Inquiry />} />
           <Route path="/contact" element={<ContactUs />} />
+          <Route path="/product/:productId" element={<ProductDetail />} />
 
           {/* Legal Pages */}
           <Route path="/privacy" element={<PrivacyPolicy />} />

@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import assets from "../assets/assets";
 
 const products = [
@@ -40,6 +41,7 @@ export default function PopularProducts() {
   const trackRef = useRef(null);
   const position = useRef(0);
   const isPaused = useRef(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const track = trackRef.current;
@@ -61,7 +63,15 @@ export default function PopularProducts() {
   }, []);
 
   const manualSlide = (dir) => {
+    isPaused.current = true;
     position.current += dir * 280;
+    setTimeout(() => {
+      isPaused.current = false;
+    }, 800);
+  };
+
+  const handleBuyNow = () => {
+    navigate("/products"); // Redirect to /products
   };
 
   return (
@@ -72,7 +82,10 @@ export default function PopularProducts() {
           <p className="text-teal-600 font-semibold tracking-widest mb-3">
             POPULAR PRODUCTS
           </p>
-          <p className="text-slate-600 max-w-xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900">
+            Our Best Sellers
+          </h2>
+          <p className="mt-4 text-slate-600 max-w-xl mx-auto">
             Are you looking for something outside the box? Let us help you explore
             our wide range of products.
           </p>
@@ -87,16 +100,16 @@ export default function PopularProducts() {
           {/* Arrows */}
           <button
             onClick={() => manualSlide(-1)}
-            className="hidden md:flex absolute -left-12 top-1/2 -translate-y-1/2 w-10 h-10 border border-slate-300 rotate-45 items-center justify-center hover:bg-teal-500 hover:border-teal-500 transition z-10"
+            className="hidden md:flex absolute -left-12 top-1/2 -translate-y-1/2 w-12 h-12 border border-slate-300 rotate-45 items-center justify-center hover:bg-teal-500 hover:border-teal-500 transition z-10 shadow-md"
           >
-            <ChevronLeft className="-rotate-45 hover:text-white" />
+            <ChevronLeft className="-rotate-45 text-slate-700 hover:text-white" />
           </button>
 
           <button
             onClick={() => manualSlide(1)}
-            className="hidden md:flex absolute -right-12 top-1/2 -translate-y-1/2 w-10 h-10 border border-slate-300 rotate-45 items-center justify-center hover:bg-teal-500 hover:border-teal-500 transition z-10"
+            className="hidden md:flex absolute -right-12 top-1/2 -translate-y-1/2 w-12 h-12 border border-slate-300 rotate-45 items-center justify-center hover:bg-teal-500 hover:border-teal-500 transition z-10 shadow-md"
           >
-            <ChevronRight className="-rotate-45 hover:text-white" />
+            <ChevronRight className="-rotate-45 text-slate-700 hover:text-white" />
           </button>
 
           {/* Track */}
@@ -107,43 +120,49 @@ export default function PopularProducts() {
                   key={i}
                   className="min-w-[280px] sm:min-w-[320px] lg:min-w-[340px]"
                 >
-                  <div className="relative group">
-                    <div className="absolute inset-0 border border-slate-200 rounded-lg" />
+                  <div className="relative group bg-white rounded-2xl border border-slate-200 shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden">
+                    {/* Image */}
+                    <div className="h-64 flex items-center justify-center p-8">
+                      <img
+                        src={product.image}
+                        alt={product.name}
+                        className="max-h-full object-contain transition duration-500 group-hover:scale-105"
+                        onError={(e) =>
+                          (e.target.src =
+                            "https://via.placeholder.com/300x400?text=Product")
+                        }
+                      />
+                    </div>
 
-                    <div className="relative bg-white rounded-lg px-10 pt-14 pb-10 shadow-sm group-hover:shadow-xl transition">
-                      {/* image */}
-                      <div className="h-48 flex items-center justify-center">
-                        <img
-                          src={product.image}
-                          alt={product.name}
-                          className="max-h-full object-contain group-hover:-translate-y-4 transition duration-500"
-                          onError={(e) =>
-                            (e.target.src =
-                              "https://via.placeholder.com/300x300?text=Product")
-                          }
-                        />
-                      </div>
+                    {/* Name */}
+                    <p className="mt-6 text-center text-base font-semibold text-slate-800 px-6 leading-snug">
+                      {product.name}
+                    </p>
 
-                      {/* text */}
-                      <p className="mt-10 text-center font-semibold text-sm text-slate-800 leading-snug">
-                        {product.name}
-                      </p>
+                    {/* Buttons */}
+                    <div className="mt-8 px-6 pb-8 flex flex-col gap-3">
+                      <button
+                        onClick={handleBuyNow}
+                        className="w-full py-3 px-6 text-sm font-semibold rounded-full bg-teal-600 text-white hover:bg-teal-700 transition shadow-md hover:shadow-lg"
+                      >
+                        BUY NOW
+                      </button>
 
-                      {/* buttons */}
-                      <div className="mt-8 flex flex-col gap-3 items-center">
-                        <button className="w-full px-6 py-2 text-sm font-semibold rounded-full bg-teal-600 text-white hover:bg-teal-700 transition">
-                          BUY NOW
-                        </button>
-
-                        <a
-                          href={product.amazonLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="w-full px-6 py-2 text-sm font-semibold rounded-full border border-slate-300 text-slate-700 hover:border-orange-500 hover:text-orange-600 transition text-center"
+                      <a
+                        href={product.amazonLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full py-3 px-6 text-sm font-semibold rounded-full border border-orange-500 text-orange-600 hover:bg-orange-50 hover:border-orange-600 transition text-center flex items-center justify-center gap-2"
+                      >
+                        BUY FROM AMAZON
+                        <svg
+                          className="w-4 h-4"
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
                         >
-                          BUY FROM AMAZON
-                        </a>
-                      </div>
+                          <path d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z" />
+                        </svg>
+                      </a>
                     </div>
                   </div>
                 </div>

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-
-/* ================= PRODUCT IMAGES (20+) ================= */
+import { useNavigate } from "react-router-dom";
 import assets from "../assets/assets";
 
+/* ================= PRODUCT IMAGES ================= */
 const PRODUCT_IMAGES = [
   assets.paper1Jpg,
   assets.paper1Png,
@@ -10,19 +10,20 @@ const PRODUCT_IMAGES = [
   assets.paper3Jpg,
 ];
 
-
 export default function KitchenTissueDetails() {
   const [activeImage, setActiveImage] = useState(PRODUCT_IMAGES[0]);
+  const navigate = useNavigate();
+
+  const handleBuyNow = () => {
+    navigate("/products"); // Redirect to /products page
+  };
 
   return (
     <section className="bg-gradient-to-br from-slate-50 via-white to-slate-100 py-20">
       <div className="max-w-7xl mx-auto px-4 lg:px-8">
-
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-
-          {/* ================= LEFT : IMAGE GALLERY ================= */}
+          {/* ================= LEFT: IMAGE GALLERY ================= */}
           <div className="flex flex-col-reverse lg:flex-row gap-4">
-
             {/* Thumbnails */}
             <div className="flex lg:flex-col gap-3 overflow-x-auto lg:overflow-y-auto lg:h-[520px] scrollbar-hide pr-1">
               {PRODUCT_IMAGES.map((img, index) => (
@@ -34,13 +35,13 @@ export default function KitchenTissueDetails() {
                     transition-all duration-300
                     ${
                       activeImage === img
-                        ? "border-teal-500 ring-2 ring-teal-400"
+                        ? "border-teal-500 ring-2 ring-teal-400 shadow-md"
                         : "border-slate-200 hover:border-teal-300"
                     }`}
                 >
                   <img
                     src={img}
-                    alt=""
+                    alt={`Thumbnail ${index + 1}`}
                     className="w-full h-full object-contain p-2"
                   />
                 </button>
@@ -59,9 +60,8 @@ export default function KitchenTissueDetails() {
             </div>
           </div>
 
-          {/* ================= RIGHT : PRODUCT DETAILS ================= */}
+          {/* ================= RIGHT: PRODUCT DETAILS ================= */}
           <div className="space-y-8">
-
             {/* Title */}
             <div>
               <h1 className="text-3xl sm:text-4xl font-bold text-slate-900">
@@ -120,23 +120,36 @@ export default function KitchenTissueDetails() {
               </div>
             </div>
 
-            {/* CTA */}
+            {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="flex-1 bg-teal-500 text-white py-4 rounded-xl font-semibold hover:bg-teal-600 transition">
+              <button
+                onClick={handleBuyNow}
+                className="flex-1 bg-teal-500 hover:bg-teal-600 text-white py-4 rounded-xl font-semibold transition shadow-md"
+              >
                 Buy Now
               </button>
-              <a   target="_blank"
-  rel="noopener noreferrer"
-  className="flex-1 border border-slate-300 py-4 rounded-xl font-semibold text-slate-800 hover:bg-slate-100 transition text-center" href="https://www.amazon.in/Crysco-Kitchen-Tissue-Absorbant-Natural/dp/B0FHWGXYCL?ref_=ast_sto_dp&th=1">
+
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://www.amazon.in/Crysco-Kitchen-Tissue-Absorbant-Natural/dp/B0FHWGXYCL?ref_=ast_sto_dp&th=1"
+                className="flex-1 border border-slate-300 py-4 rounded-xl font-semibold text-slate-800 hover:bg-slate-100 transition text-center flex items-center justify-center gap-2"
+              >
                 Buy From Amazon
+                <svg
+                  className="w-4 h-4"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z" />
+                </svg>
               </a>
             </div>
 
             {/* Tagline */}
-            <p className="text-sm text-slate-500 italic">
+            <p className="text-sm text-slate-500 italic text-center">
               Safe. Strong. Smart kitchen care.
             </p>
-
           </div>
         </div>
       </div>

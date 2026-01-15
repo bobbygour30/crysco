@@ -1,35 +1,37 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import assets from "../assets/assets";
-/* ================= PRODUCT IMAGES (20+) ================= */
 
+/* ================= PRODUCT IMAGES ================= */
 const PRODUCT_IMAGES = [
   assets.towel1Jpeg,
   assets.towel1Jpg,
   assets.towel1Png,
-
   assets.towel2Jpeg,
   assets.towel2Jpg,
   assets.towel2Png,
-
   assets.towel3Jpeg,
   assets.towel3Jpg,
   assets.towel3Png,
-
   assets.towel4Jpg,
   assets.towel4Png,
-
   assets.towel5Jpg,
   assets.towel5Png,
 ];
 
 export default function KitchenTowelDetails() {
   const [activeImage, setActiveImage] = useState(PRODUCT_IMAGES[0]);
+  const navigate = useNavigate();
+
+  const handleBuyNow = () => {
+    navigate("/products"); // Redirect to /products page
+  };
 
   return (
     <section className="bg-gradient-to-br from-slate-50 via-white to-slate-100 py-20">
       <div className="max-w-7xl mx-auto px-4 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-          {/* ================= LEFT : IMAGE GALLERY ================= */}
+          {/* ================= LEFT: IMAGE GALLERY ================= */}
           <div className="flex flex-col-reverse lg:flex-row gap-4">
             {/* Thumbnails */}
             <div className="flex lg:flex-col gap-3 overflow-x-auto lg:overflow-y-auto lg:h-[520px] scrollbar-hide pr-1">
@@ -42,13 +44,13 @@ export default function KitchenTowelDetails() {
                     transition-all duration-300
                     ${
                       activeImage === img
-                        ? "border-teal-500 ring-2 ring-teal-400"
+                        ? "border-teal-500 ring-2 ring-teal-400 shadow-md"
                         : "border-slate-200 hover:border-teal-300"
                     }`}
                 >
                   <img
                     src={img}
-                    alt=""
+                    alt={`Thumbnail ${index + 1}`}
                     className="w-full h-full object-contain p-2"
                   />
                 </button>
@@ -67,7 +69,7 @@ export default function KitchenTowelDetails() {
             </div>
           </div>
 
-          {/* ================= RIGHT : PRODUCT DETAILS ================= */}
+          {/* ================= RIGHT: PRODUCT DETAILS ================= */}
           <div className="space-y-8">
             {/* Title */}
             <div>
@@ -122,23 +124,34 @@ export default function KitchenTowelDetails() {
               </div>
             </div>
 
-            {/* CTA */}
+            {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="flex-1 bg-teal-500 text-white py-4 rounded-xl font-semibold hover:bg-teal-600 transition">
+              <button
+                onClick={handleBuyNow}
+                className="flex-1 bg-teal-500 hover:bg-teal-600 text-white py-4 rounded-xl font-semibold transition shadow-md"
+              >
                 Buy Now
               </button>
+
               <a
-              href="https://www.amazon.in/Crysco-Non-Woven-Washable-Reusable-Absorbent/dp/B0FJRTPGHZ?ref_=ast_sto_dp"
+                href="https://www.amazon.in/Crysco-Non-Woven-Washable-Reusable-Absorbent/dp/B0FJRTPGHZ?ref_=ast_sto_dp"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 border border-slate-300 py-4 rounded-xl font-semibold text-slate-800 hover:bg-slate-100 transition text-center"
+                className="flex-1 border border-slate-300 py-4 rounded-xl font-semibold text-slate-800 hover:bg-slate-100 transition text-center flex items-center justify-center gap-2"
               >
                 Buy From Amazon
+                <svg
+                  className="w-4 h-4"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z" />
+                </svg>
               </a>
             </div>
 
             {/* Tagline */}
-            <p className="text-sm text-slate-500 italic">
+            <p className="text-sm text-slate-500 italic text-center">
               Smart cleaning starts here.
             </p>
           </div>

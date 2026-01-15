@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import assets from "../assets/assets";
 
 /* ================= IMAGE DATA ================= */
@@ -16,16 +17,18 @@ const PRODUCT_IMAGES = [
 
 export default function ProductDetails() {
   const [activeImage, setActiveImage] = useState(PRODUCT_IMAGES[0].src);
+  const navigate = useNavigate();
+
+  const handleBuyNow = () => {
+    navigate("/products"); // Redirect to /products page
+  };
 
   return (
     <section className="bg-gradient-to-br from-slate-50 via-white to-slate-100 py-14">
       <div className="max-w-7xl mx-auto px-4 lg:px-8">
-
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
-
           {/* ================= LEFT : IMAGES ================= */}
           <div className="flex flex-col-reverse lg:flex-row gap-4">
-
             {/* THUMBNAILS */}
             <div className="flex lg:flex-col gap-3 overflow-x-auto lg:overflow-y-auto lg:h-[520px] scrollbar-hide">
               {PRODUCT_IMAGES.map((img) => (
@@ -38,7 +41,7 @@ export default function ProductDetails() {
                     transition-all duration-300
                     ${
                       activeImage === img.src
-                        ? "border-teal-500 ring-2 ring-teal-400"
+                        ? "border-teal-500 ring-2 ring-teal-400 shadow-md"
                         : "border-slate-200 hover:border-teal-300"
                     }`}
                 >
@@ -65,7 +68,6 @@ export default function ProductDetails() {
 
           {/* ================= RIGHT : DETAILS ================= */}
           <div className="space-y-8">
-
             {/* TITLE */}
             <div>
               <h1 className="text-3xl lg:text-4xl font-bold text-slate-900">
@@ -118,20 +120,21 @@ export default function ProductDetails() {
 
             {/* CTA */}
             <div className="flex gap-4">
-              <button className="flex-1 bg-teal-500 text-white py-4 rounded-xl font-semibold hover:bg-teal-600 transition">
+              <button
+                onClick={handleBuyNow}
+                className="flex-1 bg-teal-500 text-white py-4 rounded-xl font-semibold hover:bg-teal-600 transition shadow-md"
+              >
                 Buy Now
               </button>
               <a
-  href="https://www.amazon.in/dp/B0FHRSGYYF?th=1"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="flex-1 border border-slate-300 py-4 rounded-xl font-semibold text-slate-800 hover:bg-slate-100 transition text-center"
->
-  Buy From Amazon
-</a>
-
+                href="https://www.amazon.in/dp/B0FHRSGYYF?th=1"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 border border-slate-300 py-4 rounded-xl font-semibold text-slate-800 hover:bg-slate-100 transition text-center"
+              >
+                Buy From Amazon
+              </a>
             </div>
-
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
+// src/pages/ProductList.jsx
 import { useEffect, useState, useContext } from "react";
 import { motion } from "framer-motion";
-import { ShoppingBag, ShoppingCart } from "lucide-react";
+import { ShoppingBag, ShoppingCart, ExternalLink } from "lucide-react";
 import api from "../utils/api";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
@@ -35,6 +36,10 @@ export default function ProductList() {
       console.error("Add to cart error:", error);
       alert("Failed to add item to cart. Please try again.");
     }
+  };
+
+  const handleProductClick = (productId) => {
+    navigate(`/product/${productId}`);
   };
 
   return (
@@ -72,7 +77,8 @@ export default function ProductList() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.15 }}
-                className="group relative bg-white rounded-3xl border border-slate-200 shadow-sm hover:shadow-2xl transition overflow-hidden"
+                className="group relative bg-white rounded-3xl border border-slate-200 shadow-sm hover:shadow-2xl transition overflow-hidden cursor-pointer"
+                onClick={() => handleProductClick(product._id)} // ← Added click to detail page
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-teal-50 to-transparent opacity-0 group-hover:opacity-100 transition" />
 
@@ -92,7 +98,7 @@ export default function ProductList() {
                     ₹{product.price}
                   </p>
 
-                  <div className="flex flex-col gap-3">
+                  <div className="flex flex-col gap-3" onClick={(e) => e.stopPropagation()}> {/* Prevent bubbling to detail page */}
                     <button
                       onClick={() => handleAddToCart(product._id)}
                       className="flex items-center justify-center gap-2 w-full py-3 px-5 text-sm font-semibold rounded-full bg-teal-600 text-white hover:bg-teal-700 transition"
@@ -101,10 +107,19 @@ export default function ProductList() {
                       Add to Cart
                     </button>
 
-                    <button className="flex items-center justify-center gap-2 w-full py-3 px-5 text-sm font-semibold rounded-full bg-blue-600 text-white hover:bg-blue-700 transition">
-                      <ShoppingBag size={18} />
-                      Buy Now
-                    </button>
+                   
+
+                    {product.amazonLink && (
+                      <a
+                        href={product.amazonLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-2 w-full py-3 px-5 text-sm font-semibold rounded-full border border-orange-500 text-orange-600 hover:bg-orange-50 transition"
+                      >
+                        <ExternalLink size={18} />
+                        Buy from Amazon
+                      </a>
+                    )}
                   </div>
                 </div>
               </motion.div>
