@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { PackageCheck, Truck, ClipboardList } from "lucide-react";
 import assets from "../assets/assets";
 
+/* ================= SAMPLE PRODUCTS ================= */
 const sampleProducts = [
   {
     id: 1,
@@ -43,7 +44,7 @@ export default function BuySamples() {
           </h1>
           <p className="max-w-3xl mx-auto text-teal-100 text-lg">
             Experience the quality, strength, and hygiene of Crysco products
-            before placing a bulk order. Choose samples with confidence.
+            before placing a bulk order.
           </p>
         </motion.div>
       </section>
@@ -61,7 +62,7 @@ export default function BuySamples() {
               {
                 icon: ClipboardList,
                 title: "Test Compatibility",
-                desc: "Ensure the product fits your business, brand, or usage needs.",
+                desc: "Ensure the product fits your business needs.",
               },
               {
                 icon: Truck,
@@ -110,31 +111,80 @@ export default function BuySamples() {
                 transition={{ delay: i * 0.15 }}
                 className="group bg-white border border-slate-200 rounded-3xl shadow-sm hover:shadow-2xl transition overflow-hidden"
               >
-                {/* image */}
                 <div className="h-52 flex items-center justify-center p-6 bg-slate-50">
                   <img
                     src={product.image}
                     alt={product.name}
                     className="max-h-full object-contain transition duration-500 group-hover:-translate-y-3 group-hover:scale-105"
-                    onError={(e) =>
-                      (e.target.src =
-                        "https://via.placeholder.com/300x300?text=Sample")
-                    }
                   />
                 </div>
 
-                {/* content */}
                 <div className="px-6 pb-8 text-center">
-                  <h3 className="mt-6 text-sm font-semibold text-slate-800 leading-snug mb-6">
+                  <h3 className="mt-6 text-sm font-semibold text-slate-800 mb-6">
                     {product.name}
                   </h3>
-
                   <button className="w-full px-5 py-2 rounded-full bg-teal-600 text-white font-semibold hover:bg-teal-700 transition">
                     Buy Sample
                   </button>
                 </div>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ================= WHOLESALER & BULK SECTION ================= */}
+      <section className="py-28 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-6">
+
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
+              Wholesaler & Bulk Orders
+            </h2>
+            <p className="mt-4 text-slate-600 max-w-3xl mx-auto">
+              Designed for distributors, wholesalers, hotels, institutions, and
+              large-scale buyers.
+            </p>
+          </div>
+
+          {/* Creative Media Layout */}
+          <div className="grid lg:grid-cols-3 gap-8 items-stretch">
+
+            {/* LEFT – VIDEO */}
+            <div className="lg:col-span-1 h-[420px] rounded-3xl overflow-hidden shadow-xl bg-black">
+              <video
+                src={assets.sampleVideo}
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            {/* RIGHT – IMAGES MOSAIC */}
+            <div className="lg:col-span-2 grid grid-cols-2 md:grid-cols-3 gap-6">
+              {[
+                assets.sampleImg1,
+                assets.sampleImg2,
+                assets.sampleImg3,
+                assets.sampleImg4,
+                assets.sampleImg5,
+                assets.sampleImg6,
+              ].map((img, index) => (
+                <div
+                  key={index}
+                  className="h-[200px] rounded-2xl overflow-hidden shadow-lg bg-white"
+                >
+                  <img
+                    src={img}
+                    alt="Bulk Supply"
+                    className="w-full h-full object-cover hover:scale-105 transition duration-500"
+                  />
+                </div>
+              ))}
+            </div>
+
           </div>
         </div>
       </section>
@@ -156,9 +206,9 @@ export default function BuySamples() {
             custom sizes, and long-term supply solutions.
           </p>
 
-          <button className="px-8 py-3 rounded-full bg-teal-600 hover:bg-teal-700 transition font-semibold">
+          <a href="/contact" className="px-8 py-3 rounded-full bg-teal-600 hover:bg-teal-700 transition font-semibold">
             Contact Sales Team
-          </button>
+          </a>
         </div>
       </section>
     </main>

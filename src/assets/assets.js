@@ -58,6 +58,17 @@ import video2 from "./videos (2).mp4";
 import video3 from "./videos (3).mp4";
 import video4 from "./videos (4).mp4";
 
+// Sample Images
+import sampleImg1 from "./samples (1).jpeg";
+import sampleImg2 from "./samples (2).jpeg";
+import sampleImg3 from "./samples (3).jpeg";
+import sampleImg4 from "./samples (4).jpeg";
+import sampleImg5 from "./samples (5).jpeg";
+import sampleImg6 from "./samples (6).jpeg";
+
+// Sample Video
+import sampleVideo from "./sample-vid.mp4";
+
 const assets = {
   logo,
   slider,
@@ -115,6 +126,17 @@ const assets = {
   video2,
   video3,
   video4,
+
+  /* Sample Images */
+  sampleImg1,
+  sampleImg2,
+  sampleImg3,
+  sampleImg4,
+  sampleImg5,
+  sampleImg6,
+
+  /* Sample Video */
+  sampleVideo,
 };
 
 export default assets;
