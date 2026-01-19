@@ -46,6 +46,18 @@ import paper1Png from "./paper (1).png";
 import paper2Jpg from "./paper (2).jpg";
 import paper3Jpg from "./paper (3).jpg";
 
+// Images
+import image1 from "./images (1).jpeg";
+import image2 from "./images (2).jpeg";
+import image3 from "./images (3).jpeg";
+import image4 from "./images (4).jpeg";
+
+// Videos
+import video1 from "./videos (1).mp4";
+import video2 from "./videos (2).mp4";
+import video3 from "./videos (3).mp4";
+import video4 from "./videos (4).mp4";
+
 const assets = {
   logo,
   slider,
@@ -91,6 +103,18 @@ const assets = {
   paper3Jpg,
 
   about,
+
+  /* Images */
+  image1,
+  image2,
+  image3,
+  image4,
+
+  /* Videos */
+  video1,
+  video2,
+  video3,
+  video4,
 };
 
 export default assets;

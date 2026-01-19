@@ -30,6 +30,7 @@ import AddProduct from "./pages/Admin/AddProduct";
 import OrderList from "./pages/Admin/OrderList";
 import ProductDetail from "./pages/ProductDetail";
 import ScrollToTop from "./components/ScrollToTop";
+import Gallery from "./pages/Gallery";
 
 const App = () => {
   return (
@@ -46,6 +47,7 @@ const App = () => {
           <Route path="/samples" element={<BuySamples />} />
           <Route path="/inquiry" element={<Inquiry />} />
           <Route path="/contact" element={<ContactUs />} />
+          <Route path="/gallery" element={<Gallery />} />
           <Route path="/product/:productId" element={<ProductDetail />} />
 
           {/* Legal Pages */}
