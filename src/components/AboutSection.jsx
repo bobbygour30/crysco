@@ -60,9 +60,7 @@ export default function AboutSection() {
               automobiles, confectionery, and pharmaceuticals.
             </p>
 
-            <button className="mt-10 inline-flex items-center gap-2 px-8 py-3 rounded-full border border-slate-300 text-slate-800 font-semibold hover:bg-teal-500 hover:text-white hover:border-teal-500 transition-all">
-              Know More <ArrowRight size={18} />
-            </button>
+           
           </div>
 
           {/* RIGHT PRODUCTS */}

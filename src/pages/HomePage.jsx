@@ -3,7 +3,6 @@ import Hero from '../components/Hero'
 import ProductDetails from '../components/ProductDetails'
 import KitchenTowelDetails from '../components/KitchenTowelDetails'
 import KitchenTissueDetails from '../components/KitchenTissueDetails'
-import AboutSection from '../components/AboutSection'
 import Highlights from '../components/Highlights'
 import WhyChooseUs from '../components/WhyChooseUs'
 import PopularProducts from '../components/PopularProducts'
@@ -17,7 +16,6 @@ const HomePage = () => {
       <ProductDetails />
       <KitchenTowelDetails />
       <KitchenTissueDetails />
-      <AboutSection />
       <Highlights />
       <WhyChooseUs /> 
       <PopularProducts />

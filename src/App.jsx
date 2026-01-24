@@ -5,11 +5,8 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
 import HomePage from "./pages/HomePage";
-import PrivacyPolicy from "./pages/PrivacyPolicy";
-import TermsAndConditions from "./pages/TermsAndConditions";
 import AboutUs from "./pages/AboutUs";
 import Products from "./pages/Products";
-import BuySamples from "./pages/BuySamples";
 import Inquiry from "./pages/Inquiry";
 import ContactUs from "./pages/ContactUs";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -30,7 +27,7 @@ import AddProduct from "./pages/Admin/AddProduct";
 import OrderList from "./pages/Admin/OrderList";
 import ProductDetail from "./pages/ProductDetail";
 import ScrollToTop from "./components/ScrollToTop";
-import Gallery from "./pages/Gallery";
+import LegalPolicies from "./pages/LegalPolicies";
 
 const App = () => {
   return (
@@ -44,15 +41,11 @@ const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/products" element={<Products />} />
-          <Route path="/samples" element={<BuySamples />} />
           <Route path="/inquiry" element={<Inquiry />} />
           <Route path="/contact" element={<ContactUs />} />
-          <Route path="/gallery" element={<Gallery />} />
           <Route path="/product/:productId" element={<ProductDetail />} />
 
-          {/* Legal Pages */}
-          <Route path="/privacy" element={<PrivacyPolicy />} />
-          <Route path="/terms" element={<TermsAndConditions />} />
+          <Route path="/legal-policies" element={<LegalPolicies />} />
 
           {/* Authentication */}
           <Route path="/login" element={<Login />} />

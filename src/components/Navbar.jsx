@@ -23,10 +23,8 @@ export default function Navbar() {
     { label: "Home", path: "/" },
     { label: "About Us", path: "/about-us" },
     { label: "Products", path: "/products" },
-    { label: "Buy Samples", path: "/samples" },
     { label: "Inquiry", path: "/inquiry" },
-    { label: "Privacy Policy", path: "/privacy" },
-    { label: "Terms & Conditions", path: "/terms" },
+    { label: "Legal Policies", path: "/legal-policies" },
   ];
 
   const handleLogout = () => {
