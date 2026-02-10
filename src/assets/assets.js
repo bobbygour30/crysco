@@ -66,6 +66,7 @@ import sampleImg4 from "./samples (4).jpeg";
 import sampleImg5 from "./samples (5).jpeg";
 import sampleImg6 from "./samples (6).jpeg";
 
+import certificate from "./Picture1.png";
 // Sample Video
 import sampleVideo from "./sample-vid.mp4";
 
@@ -137,6 +138,8 @@ const assets = {
 
   /* Sample Video */
   sampleVideo,
+
+  certificate,
 };
 
 export default assets;
